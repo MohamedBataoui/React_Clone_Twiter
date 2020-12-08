@@ -1,38 +1,375 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1f1;
+  font-family: sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+span {
+  color: #6441a4;
+  font-weight: 700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 
+/////////////////////////////////////////////////////
+Partie Header
+////////////////////////////////////////////////////
+*/
+
+.headerTop {
+  background: #6441a4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.9) !important;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.listeMenu {
+  height: 50px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.liensNav {
+  list-style-type: none;
+  padding: 0 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.liensNav:nth-child(4) {
+  margin: 0 auto;
+  flex-shrink: 1;
+  width: 600px;
+}
+
+.lien {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.lien:hover {
+  color: #19171c;
+}
+
+.logo {
+  margin-top: 5px;
+}
+
+.formSubmit {
+  display: flex;
+  flex-shrink: 1;
+}
+
+.logoLoupe {
+  width: 20px;
+}
+
+.inputSearch {
+  width: 50%;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 10px;
+}
+
+.liensNav button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 4px 20px;
+  border: none;
+}
+
+.menuResBtn {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.menuIco {
+  width: 25px;
+}
+
+@media screen and (max-width: 950px) {
+  .liensNav:nth-child(4) {
+    width: 550px;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media screen and (max-width: 900px) {
+  .listeMenu {
+    flex-direction: column;
+    height: 250px;
+    padding-top: 50px;
+  }
+  .liensNav {
+    height: 100px;
+    background: #6441a4;
+    width: 100%;
+  }
+  .liensNav:nth-child(4) {
+    width: 100% !important;
+    padding: 10px 0 20px 0;
+  }
+  .formSubmit {
+    justify-content: center;
+  }
+  .menuResBtn {
+    display: block !important;
+    z-index: 1000;
+  }
+}
+
+/* 
+/////////////////////////////////////////////////////
+Partie SideBar
+////////////////////////////////////////////////////
+*/
+
+.sidebar {
+  position: fixed;
+  top: 50px;
+  width: 239px;
+  background: #19171c;
+  height: 100vh;
+}
+
+.titreSidebar {
+  padding: 30px 0 20px 0;
+  color: #efebf5;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.listeStream {
+  padding: 0 0 0 10px;
+  color: #efebf5;
+}
+
+.containerFlexSidebar {
+  padding: 10px 15px 8px 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+}
+
+.containerFlexSidebar:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.profilePicRonde {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.streamUser {
+  color: #f1f1f1;
+  flex-basis: 50%;
+  overflow: hidden;
+  text-align: left;
+}
+
+.gameNameSidebar {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #aeabb6;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.viewerRight {
+  color: #aeabb6;
+  flex-basis: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pointRouge {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-right: 3px;
+  background: crimson;
+}
+
+@media screen and (max-width: 1200px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* 
+/////////////////////////////////////////////////////
+Partie Games
+////////////////////////////////////////////////////
+*/
+
+.titreGames {
+  padding-top: 90px;
+  font-size: 50px;
+  font-weight: 300;
+  padding-left: 260px;
+  padding-bottom: 50px;
+}
+
+.flexAccueil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 260px;
+}
+
+.carteGames {
+  height: 480px;
+  width: 280px;
+  margin: 0 30px 30px 0;
+  position: relative;
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 2px 11px 36px -16px rgba(0, 0, 0, 0.75);
+}
+
+.carteGames:hover {
+  transform: translate(-2px, -5px);
+}
+
+.imgCarte {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.carteBodyGames {
+  height: 144px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.btnCarte {
+  height: 50px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #212529;
+  font-size: 14px;
+  line-height: 1.125;
+  border-radius: 5px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.btnCarte:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.titreCartesGames {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 80%;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 1200px) {
+  .titreGames {
+    padding-left: 0px;
+  }
+  .flexAccueil {
+    padding-left: 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .titreGames {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 559px) {
+  .carteGames {
+    margin: 0 0 30px 0;
+  }
+  .flexAccueil {
+    padding-left: 0px;
+  }
+}
+
+/* 
+/////////////////////////////////////////////////////
+Partie Top Streams
+////////////////////////////////////////////////////
+*/
+
+.carteStream {
+  height: 420px;
+  width: 320px;
+  margin: 0 30px 30px 0;
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 2px 11px 36px -16px rgba(0, 0, 0, 0.75);
+}
+
+.carteStream:hover {
+  transform: translate(-2px, -5px);
+}
+
+.titreCartesStream {
+  font-size: 21px;
+  white-space: nowrap;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  width: 80%;
+  font-weight: 500;
+}
+.cardBodyStream {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.txtStream {
+  padding: 20px 0;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.viewers {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 559px) {
+  .carteStream {
+    margin: 0 0 30px 0;
   }
 }
